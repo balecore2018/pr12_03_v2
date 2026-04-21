@@ -1,7 +1,7 @@
 package com.example.network.domains.common;
 
 public class Settings {
-    public static String URL = "http://10.0.2.2:5000";
+    public static String URL = "http://10.111.20.114:5000";
 
-    public static String DEMO_TOKEN = "22e2c951-414f-4e70-a09b-305e4a637ad2";
+    public static String DEMO_TOKEN = "5cffbfde-00f9-48a0-90ea-229fd5f04376";
 }

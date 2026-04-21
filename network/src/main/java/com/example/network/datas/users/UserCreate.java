@@ -4,14 +4,18 @@ import com.example.network.domains.apis.MyAsyncTask;
 import com.example.network.domains.callbacks.MyResponseCallback;
 import com.example.network.domains.common.Settings;
 import com.example.network.domains.models.User;
+import com.google.gson.GsonBuilder;
+
+import org.jsoup.Jsoup;
 
 import java.io.IOException;
-import java.sql.Connection;
+
+import org.jsoup.Connection;
 
 public class UserCreate extends MyAsyncTask {
     User user;
 
-    public UserCreate(User user, MyResponseCallback callback) {
+    public UserCreate(User user, String demoToken, MyResponseCallback callback) {
         super(callback);
         this.user = user;
     }

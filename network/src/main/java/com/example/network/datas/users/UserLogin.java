@@ -5,8 +5,11 @@ import com.example.network.domains.callbacks.MyResponseCallback;
 import com.example.network.domains.common.Settings;
 import com.example.network.domains.models.User;
 
+
 import java.io.IOException;
-import java.sql.Connection;
+import org.jsoup.Jsoup;
+import org.jsoup.Connection;
+import com.google.gson.GsonBuilder;
 
 public class UserLogin extends MyAsyncTask {
     User user;

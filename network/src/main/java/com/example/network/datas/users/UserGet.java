@@ -3,10 +3,11 @@ package com.example.network.datas.users;
 import com.example.network.domains.apis.MyAsyncTask;
 import com.example.network.domains.callbacks.MyResponseCallback;
 import com.example.network.domains.common.Settings;
-import com.example.network.domains.models.User;
 
+import org.jsoup.Jsoup;
+import org.jsoup.Connection;
 import java.io.IOException;
-import java.sql.Connection;
+
 
 public class UserGet extends MyAsyncTask {
     String token;
