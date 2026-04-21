@@ -8,24 +8,23 @@ import com.example.network.domains.models.User;
 import java.io.IOException;
 import java.sql.Connection;
 
-public class UserCreate extends MyAsyncTask {
-    User user;
+public class UserLogout extends MyAsyncTask {
+    String token;
 
-    public UserCreate(User user, MyResponseCallback callback) {
+    public UserLogout(String token, MyResponseCallback callback) {
         super(callback);
-        this.user = user;
+        this.token = token;
     }
 
     @Override
     protected String doInBackground(Void... voids) {
-        String rawData = new GsonBuilder().create().toJson(user);
         try {
-            Connection.Response response = Jsoup.connect(Settings.URL + "/api/user/create")
+            Connection.Response response = Jsoup.connect(Settings.URL + "/api/user/logout")
                     .ignoreContentType(true)
                     .ignoreHttpErrors(true)
                     .method(Connection.Method.POST)
                     .header("Content-type", "application/json")
-                    .requestBody(rawData)
+                    .header("token", token)
                     .execute();
             return response.statusCode() == 200 ?
                     response.body() :

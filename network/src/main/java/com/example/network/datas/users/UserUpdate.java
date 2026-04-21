@@ -1,5 +1,6 @@
 package com.example.network.datas.users;
 
+
 import com.example.network.domains.apis.MyAsyncTask;
 import com.example.network.domains.callbacks.MyResponseCallback;
 import com.example.network.domains.common.Settings;
@@ -8,23 +9,26 @@ import com.example.network.domains.models.User;
 import java.io.IOException;
 import java.sql.Connection;
 
-public class UserCreate extends MyAsyncTask {
+public class UserUpdate extends MyAsyncTask {
     User user;
+    String token;
 
-    public UserCreate(User user, MyResponseCallback callback) {
+    public UserUpdate(User user, String token, MyResponseCallback callback) {
         super(callback);
         this.user = user;
+        this.token = token;
     }
 
     @Override
     protected String doInBackground(Void... voids) {
         String rawData = new GsonBuilder().create().toJson(user);
         try {
-            Connection.Response response = Jsoup.connect(Settings.URL + "/api/user/create")
+            Connection.Response response = Jsoup.connect(Settings.URL + "/api/user/update")
                     .ignoreContentType(true)
                     .ignoreHttpErrors(true)
-                    .method(Connection.Method.POST)
+                    .method(Connection.Method.PUT)
                     .header("Content-type", "application/json")
+                    .header("token", token)
                     .requestBody(rawData)
                     .execute();
             return response.statusCode() == 200 ?
